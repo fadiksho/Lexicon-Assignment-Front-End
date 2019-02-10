@@ -1,0 +1,30 @@
+.nav-bar {
+  background-color: rgba(0, 0, 139, 0.7);
+}
+
+.nav-brand > .nav-link {
+  color: orangered;
+  background-color: darkblue;
+}
+
+.nav-item {
+  background-color: orangered;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
+
+aside {
+  padding: 5px;
+  background-color: rgba(0, 0, 139, 0.8);
+  color: white;
+}
+
+footer {
+  background-color: darkblue;
+  color: white;
+  font-size: 24px;
+  font-style: italic;
+}
