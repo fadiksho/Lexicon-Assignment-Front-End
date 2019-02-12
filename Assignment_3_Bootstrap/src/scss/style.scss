@@ -1,0 +1,41 @@
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../scss/custom.scss';
+
+body {
+  height: 1000px;
+}
+
+/* Nav Start **********************************************************************************************/
+.navbar-nav {
+
+  .dropdown-menu {
+    right: 0;
+    left: auto;
+  }
+}
+
+/* Main *********************************************************************************************/
+
+.main__content {
+  margin-top: 50px;
+}
+
+/* Cover Page ********************************************************************************************/
+
+.cover__container__text___container {
+  width: 100%;
+  text-align: center;
+  top: 45%;
+  transform: translateY(-50%); 
+}
+.bg__img {
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+}
+
+
+/* Carousel Page ***********************************************************************************/
+.carousel__image {
+  max-height: 100vh;
+}
