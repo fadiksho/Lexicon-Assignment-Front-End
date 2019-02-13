@@ -1,5 +1,10 @@
 @import '../../node_modules/bootstrap/scss/functions';
 @import '../../node_modules/bootstrap/scss/variables';
 
-$enable-responsive-font-sizes: true !default;
-// $carousel-transition
+
+$enable-responsive-font-sizes: true;
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+
+
+
