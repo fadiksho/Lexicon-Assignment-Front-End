@@ -25,7 +25,7 @@ body {
 
 /* Cover Page ********************************************************************************************/
 
-.cover__container__text___container {
+.cover__text___container {
   width: 100%;
   text-align: center;
   top: 45%;
@@ -45,44 +45,109 @@ body {
 }
 
 /* Side Nav ***********************************************************************************/
+// Header
+.pills__header__animation {
+  &:hover {
+    .pills__header__top__line {
+      left: 0;
+    }
+
+    .pills__header__bottom__line {
+      right: 0;
+    }
+
+    .pills__header__left__line {
+      top: 0;
+    }
+
+    .pills__header__right__line {
+      bottom: 0;
+    }
+  }
+}
+
+.pills__header__lines {
+  position: absolute;
+  display: block;
+  background-color: black;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(1.000, 0.500, 0.000, 0.500);
+}
+
 .pills__header__top__line {
   height: 2px;
   width: 180%;
-  background-color: black;
-  display: block;
-  position: absolute;
   top: 0;
-  left: 0;
+  left: 900px;
+  transition-property: left;
 }
+
 .pills__header__bottom__line {
   height: 2px;
   width: 180%;
-  background-color: black;
-  display: block;
-  position: absolute;
   bottom: 0px;
-  right: 0;
+  right: 900px;
+  transition-property: right;
 }
+
 .pills__header__left__line {
   height: 70%;
   width: 2px;
-  background-color: black;
-  display: block;
-  position: absolute;
-  top: 0px;
+  top: -200px;
   left: 0;
+  transition-property: top;
+
 }
+
 .pills__header__right__line {
   height: 70%;
   width: 2px;
-  background-color: black;
-  display: block;
-  position: absolute;
-  bottom: 0;
+  bottom: 200px;
   right: 0;
+  transition-property: bottom;
+}
+
+// Content
+.tab-content {
+  .tab-pane {
+    display: block;
+    position: absolute;
+    transition: all 0.2s;
+    top: 100px;
+    left: 100px;
+  }
+
+  .active {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}
+
+/* Fixed Background Parallax ***********************************************************************************/
+.parallax {
+  
+}
+.social__parallax__background {
+  background-image: url('../../dist/images/contact-keyboard.jpg');
+  min-height: 500px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+.social__parallax__text {
+  transition: transform 0.4s, opacity 0.4s;
+  opacity: 0;
+  transform: scale(3);
+}
+.social__parallax__text__show {
+  opacity: 1;
+  transform: scale(1);
 }
 /* Shared Classes ***********************************************************************************/
 .sticky__nav {
-  top: 56px;
+  top: 55px;
   z-index: 1029;
 }
