@@ -4,7 +4,6 @@
 
 $enable-responsive-font-sizes: true;
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
-
-
-
-
+.display-1, .display-2 .display-3, .display-4 {
+  font-family: 'Felipa', cursive;
+}

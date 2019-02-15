@@ -7062,6 +7062,16 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
+.display-1, .display-2 .display-3, .display-4 {
+  font-family: 'Felipa', cursive; }
+
+@font-face {
+  font-family: 'fontello';
+  src: url("../../dist/font/fontello.eot");
+  src: url("../../dist/font/fontello.eot?94175240#iefix") format("embedded-opentype"), url("../../dist/font/fontello.woff2?94175240") format("woff2"), url("../../dist/font/fontello.woff?94175240") format("woff"), url("../../dist/font/fontello.ttf?94175240") format("truetype"), url("../../dist/font/fontello.svg?94175240#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 body {
   height: 5000px; }
 
@@ -7111,14 +7121,14 @@ body {
   transition-timing-function: cubic-bezier(1, 0.5, 0, 0.5); }
 
 .pills__header__top__line {
-  height: 2px;
+  height: 3px;
   width: 180%;
   top: 0;
   left: 900px;
   transition-property: left; }
 
 .pills__header__bottom__line {
-  height: 2px;
+  height: 3px;
   width: 180%;
   bottom: 0px;
   right: 900px;
@@ -7126,14 +7136,14 @@ body {
 
 .pills__header__left__line {
   height: 70%;
-  width: 2px;
+  width: 3px;
   top: -200px;
   left: 0;
   transition-property: top; }
 
 .pills__header__right__line {
   height: 70%;
-  width: 2px;
+  width: 3px;
   bottom: 200px;
   right: 0;
   transition-property: bottom; }
@@ -7169,7 +7179,67 @@ body {
   opacity: 1;
   transform: scale(1); }
 
+.social__parallax__icon {
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in; }
+  .social__parallax__icon:hover .social__icon__text {
+    opacity: 1;
+    top: 0; }
+  .social__parallax__icon:nth-child(2) {
+    animation-delay: 0.3s; }
+  .social__parallax__icon:nth-child(3) {
+    animation-delay: 0.5s; }
+
+.social__parallax_icon__show {
+  opacity: 1 !important; }
+
+.social__icon__text {
+  opacity: 0;
+  top: 50px;
+  transition: top 0.4s, opacity 0.2s; }
+
 /* Shared Classes ***********************************************************************************/
 .sticky__nav {
   top: 55px;
   z-index: 1029; }
+
+/* Icons Classes ******************************************************************************************************/
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); }
+
+.icon-up-big:before {
+  content: '\e800'; }
+
+.icon-twitter:before {
+  content: '\f099'; }
+
+.icon-github-circled:before {
+  content: '\f09b'; }
+
+.icon-linkedin-squared:before {
+  content: '\f30c'; }
