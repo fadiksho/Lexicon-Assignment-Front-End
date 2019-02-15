@@ -7085,16 +7085,23 @@ body {
   margin-top: 55px; }
 
 /* Cover Page ********************************************************************************************/
+.cover_container {
+  z-index: -999; }
+
 .cover_text_container {
   width: 100%;
   text-align: center;
-  top: 45%;
+  top: 40%;
   transform: translateY(-50%); }
 
-.bg_img {
-  width: 100%;
-  height: auto;
-  min-height: 400px; }
+.conver_image {
+  background-image: url("../../dist/images/backgound_Cover.jpeg");
+  min-height: 500px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center; }
 
 /* Carousel ***********************************************************************************/
 .carousel_image {
@@ -7183,11 +7190,11 @@ body {
 .parallax_icons {
   font-size: calc(1.475rem + 2.7vw);
   opacity: 0;
-  transition: opacity 0.3s ease-in; }
+  transition: opacity 0.3s ease-in-out, transform 0.4s;
+  transform: scale(0.7); }
   .parallax_icons:nth-child(2) {
-    transition-delay: 0.3s; }
-  .parallax_icons:nth-child(3) {
-    transition-delay: 0.5s; }
+    transition-delay: 0ms;
+    transform: scale(1.4); }
   .parallax_icons:hover {
     text-decoration: none; }
     .parallax_icons:hover .social_icon_text {
@@ -7195,7 +7202,8 @@ body {
       top: 0; }
 
 .parallax_icons_show .parallax_icons {
-  opacity: 1; }
+  opacity: 1;
+  transform: scale(1); }
 
 /* Social Text ***********************************************************************************/
 .social_icon_text {
