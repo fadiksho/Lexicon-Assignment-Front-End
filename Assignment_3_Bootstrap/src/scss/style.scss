@@ -16,7 +16,7 @@ body {
   height: 5000px;
 }
 
-/* Nav **********************************************************************************************/
+// #region Nav ************************************************************************************
 .top_nav {
   // height: 64px;
 }
@@ -27,23 +27,26 @@ body {
     left: auto;
   }
 }
+// #endregion
 
-/* Main *********************************************************************************************/
+// Main
 .main_content {
   // Nav Height
   margin-top: 55px;
 }
 
-/* Cover Page ********************************************************************************************/
-.cover_container  {
+// #region Cover Page ********************************************************************************************/
+.cover_container {
   z-index: -999;
 }
+
 .cover_text_container {
   width: 100%;
   text-align: center;
   top: 40%;
   transform: translateY(-50%);
 }
+
 .conver_image {
   background-image: url('../../dist/images/backgound_Cover.jpeg');
   min-height: 500px;
@@ -53,31 +56,48 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
+// #endregion
 
-/* Carousel ***********************************************************************************/
+// Carousel
 .carousel_image {
-  max-height: 100vh;
+  max-height: 85vh;
 }
 
-/* Side Nav ***********************************************************************************/
+// #region Side Nav ********************************************************
 // Header
-.pills_header_animation {
-  &:hover {
-    .pills_header_top_line {
-      left: 0;
-    }
+.pills_header_animation_in {
+  .pills_header_top_line {
+    left: 0;
+  }
 
-    .pills_header_bottom_line {
-      right: 0;
-    }
+  .pills_header_bottom_line {
+    right: 0;
+  }
 
-    .pills_header_left_line {
-      top: 0;
-    }
+  .pills_header_left_line {
+    top: 0;
+  }
 
-    .pills_header_right_line {
-      bottom: 0;
-    }
+  .pills_header_right_line {
+    bottom: 0;
+  }
+}
+
+.pills_header_animation_out {
+  .pills_header_top_line {
+    left: -900px;
+  }
+
+  .pills_header_bottom_line {
+    right: -900px;
+  }
+
+  .pills_header_left_line {
+    top: 200px;
+  }
+
+  .pills_header_right_line {
+    bottom: -200px;
   }
 }
 
@@ -121,24 +141,25 @@ body {
   right: 0;
   transition-property: bottom;
 }
+
 // Content
 .tab-content {
   .tab-pane {
     display: block;
     position: absolute;
-    transition: all 0.2s;
-    top: 100px;
-    left: 100px;
+    transition: transform 0.3s, opacity 0.2s;
+    transform: scale(0.9);
   }
 
   .active {
     position: relative;
-    top: 0;
-    left: 0;
+    transform: scale(1);
   }
 }
 
-/* Fixed Background Parallax ***********************************************************************************/
+// #endregion
+
+// #region Fixed Background Parallax  ******************************
 .social_parallax_background {
   background-image: url('../../dist/images/contact-keyboard.jpg');
   min-height: 500px;
@@ -160,16 +181,18 @@ body {
   transform: scale(1);
 }
 
-/* Social Icons ***********************************************************************************/
-.parallax_icons {
+// #endregion
 
+// #region Social Icons ******************************************
+.parallax_icons {
   font-size: calc(1.475rem + 2.7vw);
   opacity: 0;
-  transition: opacity 0.3s ease-in-out, transform 0.4s;
+  transition: opacity 0.3s, transform 0.3s;
   transform: scale(0.7);
+
   &:nth-child(2) {
-     transition-delay: 0ms;
-     transform: scale(1.4);
+    transition-delay: 0ms;
+    transform: scale(1.4);
   }
 
   &:hover {
@@ -189,7 +212,9 @@ body {
   }
 }
 
-/* Social Text ***********************************************************************************/
+// #endregion
+
+// #region Social Text *******************************************
 .social_icon_text {
   position: relative;
   opacity: 0;
@@ -205,19 +230,20 @@ body {
   top: 0;
 }
 
-/* Shared Classes ***********************************************************************************/
+// #endregion
+
+// #region Shared Classes ***************************************
 .sticky_nav {
   top: 55px;
   z-index: 1029;
 }
 
-/* Icons Classes ******************************************************************************************************/
+// Icons Classes
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
-  speak: none;
 
   display: inline-block;
   text-decoration: inherit;
@@ -267,3 +293,4 @@ body {
   content: '\f30c';
   color: #fff;
 }
+// #endregion

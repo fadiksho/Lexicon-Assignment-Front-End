@@ -7075,16 +7075,13 @@ a.text-dark:hover, a.text-dark:focus {
 body {
   height: 5000px; }
 
-/* Nav **********************************************************************************************/
 .navbar-nav .dropdown-menu {
   right: 0;
   left: auto; }
 
-/* Main *********************************************************************************************/
 .main_content {
   margin-top: 55px; }
 
-/* Cover Page ********************************************************************************************/
 .cover_container {
   z-index: -999; }
 
@@ -7103,22 +7100,32 @@ body {
   background-attachment: fixed;
   background-position: center; }
 
-/* Carousel ***********************************************************************************/
 .carousel_image {
-  max-height: 100vh; }
+  max-height: 85vh; }
 
-/* Side Nav ***********************************************************************************/
-.pills_header_animation:hover .pills_header_top_line {
+.pills_header_animation_in .pills_header_top_line {
   left: 0; }
 
-.pills_header_animation:hover .pills_header_bottom_line {
+.pills_header_animation_in .pills_header_bottom_line {
   right: 0; }
 
-.pills_header_animation:hover .pills_header_left_line {
+.pills_header_animation_in .pills_header_left_line {
   top: 0; }
 
-.pills_header_animation:hover .pills_header_right_line {
+.pills_header_animation_in .pills_header_right_line {
   bottom: 0; }
+
+.pills_header_animation_out .pills_header_top_line {
+  left: -900px; }
+
+.pills_header_animation_out .pills_header_bottom_line {
+  right: -900px; }
+
+.pills_header_animation_out .pills_header_left_line {
+  top: 200px; }
+
+.pills_header_animation_out .pills_header_right_line {
+  bottom: -200px; }
 
 .pills_header_lines {
   position: absolute;
@@ -7158,16 +7165,13 @@ body {
 .tab-content .tab-pane {
   display: block;
   position: absolute;
-  transition: all 0.2s;
-  top: 100px;
-  left: 100px; }
+  transition: transform 0.3s, opacity 0.2s;
+  transform: scale(0.9); }
 
 .tab-content .active {
   position: relative;
-  top: 0;
-  left: 0; }
+  transform: scale(1); }
 
-/* Fixed Background Parallax ***********************************************************************************/
 .social_parallax_background {
   background-image: url("../../dist/images/contact-keyboard.jpg");
   min-height: 500px;
@@ -7186,11 +7190,10 @@ body {
   opacity: 1;
   transform: scale(1); }
 
-/* Social Icons ***********************************************************************************/
 .parallax_icons {
   font-size: calc(1.475rem + 2.7vw);
   opacity: 0;
-  transition: opacity 0.3s ease-in-out, transform 0.4s;
+  transition: opacity 0.3s, transform 0.3s;
   transform: scale(0.7); }
   .parallax_icons:nth-child(2) {
     transition-delay: 0ms;
@@ -7205,7 +7208,6 @@ body {
   opacity: 1;
   transform: scale(1); }
 
-/* Social Text ***********************************************************************************/
 .social_icon_text {
   position: relative;
   opacity: 0;
@@ -7219,18 +7221,15 @@ body {
   opacity: 1;
   top: 0; }
 
-/* Shared Classes ***********************************************************************************/
 .sticky_nav {
   top: 55px;
   z-index: 1029; }
 
-/* Icons Classes ******************************************************************************************************/
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
-  speak: none;
   display: inline-block;
   text-decoration: inherit;
   margin-right: .2em;

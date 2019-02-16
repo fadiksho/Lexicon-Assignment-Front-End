@@ -216,7 +216,7 @@
       <!--Side Section------------------------------------------------------------------------------------------>
       <div class="col-md-3 col-lg-2 mr-0 mb-auto p-0 bg-light position-sticky sticky_nav">
         <!--Title------------------------------------------------------------------------------------------>
-        <div class="position-relative text-center p-1 p-md-2 overflow-hidden">
+        <div class="pills_header_animation_out pills_header_animation_in position-relative text-center p-1 p-md-2 overflow-hidden">
           <h1 class="position-relative d-inline-block lead font-weight-bold font-italic m-0 p-2 pills_header_animation">
             <span class="pills_header_top_line pills_header_lines"></span>
             <span class="pills_header_right_line pills_header_lines"></span>
@@ -449,15 +449,15 @@
     </div>
 
     <!--Parallax Image------------------------------------------------------------------------------------>
-    <div class="social_parallax_background d-flex flex-column justify-content-center align-items-center">
-      <div class="social_parallax_text social_parallax_text_show mb-1 text-center text-white">
+    <div class="social_parallax_background d-flex flex-column">
+      <div class="social_parallax_text social_parallax_text_show mt-3 text-center text-white">
         <h1 class="display-1">Be in touch!</h1>
         <h3 class="display-4">I have to say some thing cool here!</h3>
       </div>
-      <div class="align-self-stretch">
+      <div class="align-self-stretch my-3">
         <div class="parallax_icons_show d-flex justify-content-around overflow-hidden text-white text-center">
           <a
-            href="https://twitter.com/FadyKsho"
+            href="https://github.com/fadiksho"
             target="_blank"
             class="parallax_icons mt-5 text-white"
           >
@@ -465,7 +465,7 @@
             <small class="social_icon_text text-white d-block">/fadi-ksho</small>
           </a>
           <a
-            href=""
+            href="https://twitter.com/FadyKsho"
             target="_blank"
             class="parallax_icons mt-5 text-white"
           >
@@ -473,7 +473,7 @@
             <small class="social_icon_text text-white d-block">/fadiksho</small>
           </a>
           <a
-            href=""
+            href="https://www.linkedin.com/in/fadi-ksho"
             target="_blank"
             class="parallax_icons mt-5 text-white"
           >
@@ -484,50 +484,75 @@
 
         </div>
       </div>
+      <!--Contact Form-------------------------------------------------------------------------------------->
+      <div class="container my-5">
+        <h3 class="display-4 text-white text-center">Send Dircect Message :-)</h3>
+        <form
+          class="needs-validation"
+          novalidate
+        >
+          <div class="form-row">
+            <div class="col-md-6">
+              <label for="exampleInputEmail1">Email address *</label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+                required
+              >
+              <div class="invalid-feedback">
+                Email Addrees is requird.
+              </div>
+              <small
+                id="emailHelp"
+                class="form-text text-muted"
+              >I will never share your email with anyone else.</small>
+            </div>
+            <div class="col-md-6">
+              <label for="phoneNumberInputId">Phone Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="phoneNumberInputId"
+                aria-describedby="phoneHelp"
+                placeholder="Enter Phone Number"
+              >
+              <small
+                id="emailHelp"
+                class="form-text text-muted"
+              >I will never share your email with anyone else.</small>
+            </div>
+            <div class="col-12 mt-3">
+              <label for="contactMessageInputId">Message</label>
+              <textarea
+                class="form-control"
+                id="contactMessageInputId"
+                rows="3"
+                placeholder="Enter Message..."
+                required
+              ></textarea>
+              <div class="invalid-feedback">
+                Message is requird
+              </div>
+            </div>
+            <div class="col-12 mt-4 d-flex">
+              <button
+                type="submit"
+                class="btn btn-success w-100"
+              >SEND</button>
+              <button
+                type="button"
+                id="resetFormButtonId"
+                class="btn btn-danger ml-3"
+              >Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-    <!--Contact Form-------------------------------------------------------------------------------------->
-    <div class="container">
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-          >
-          <small
-            id="emailHelp"
-            class="form-text text-muted"
-          >We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-          >
-        </div>
-        <div class="form-group form-check">
-          <input
-            type="checkbox"
-            class="form-check-input"
-            id="exampleCheck1"
-          >
-          <label
-            class="form-check-label"
-            for="exampleCheck1"
-          >Check me out</label>
-        </div>
-        <button
-          type="submit"
-          class="btn btn-primary"
-        >Submit</button>
-      </form>
-    </div>
+
 
   </main>
   <footer>
@@ -551,6 +576,31 @@
   <script src="./node_modules/jquery/dist/jquery.slim.min.js"></script>
   <script src="./node_modules/popper.js/dist/popper.min.js"></script>
   <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+      var resetFormButton = document.getElementById('resetFormButtonId');
+      var contactForms = document.getElementsByClassName('needs-validation');
+      resetFormButton.addEventListener('click', function () {
+        console.log('test butt');
+        contactForms[0].classList.remove('was-validated');
+      }, false);
+    })();
+  </script>
 </body>
 
 </html>
