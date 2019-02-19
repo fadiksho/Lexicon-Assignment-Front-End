@@ -35,7 +35,7 @@
 
     var elemTop = $(elem).offset().top;
     var elemBottom = elemTop + $(elem).height();
-
+  
     return ((elemBottom <= docViewBottom) && (elemTop + offSetButton>= docViewTop));
   }
   // Get all the element that need to animate when are in view
@@ -45,7 +45,6 @@
     // Check if in view for each element
     elmentsToAnimate.each(function (index, element) {
       if (isScrolledIntoView($(this), 100)) {
-        console.log('test');
         // Get the class that will be added to the element that are in view
         var animateClassToAdd = $(this).attr('in-view-animation');
         $(this).addClass(animateClassToAdd);
@@ -58,8 +57,8 @@
       }
     });
   }
-  // first Check
-  // checkIfInView();
+  // First Check
+  checkIfInView();
   $(window).on('scroll resize', checkIfInView)
 
   // Tab animation

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
+  <title>Just a Demo!</title>
+  <link
+    href="https://fonts.googleapis.com/css?family=Felipa"
+    rel="stylesheet"
+  >
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="./css/style.css"
+  >
+  <link
+    rel="icon"
+    type="image/x-icon"
+    href="./favicon.ico"
+  >
+</head>
+
+<body
+  class="position-relative"
+  data-spy="scroll"
+  data-target="#toolBarId"
+  data-offset="100"
+>
+  <!--#region ToolBar Navigation---------------------------------------------------------------------------------------------->
+  <nav
+    id="toolBarId"
+    role="navigation"
+    class="navbar fixed-top navbar-expand-md navbar-dark bg-primary top_nav"
+  >
+    <a
+      class="navbar-brand"
+      href="#coverPage"
+    >Code & Coffees</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse"
+      id="navbarTogglerDemo02"
+    >
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#coverPageId"
+          >Home</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#blogPageId"
+          >Blog</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="false"
+            aria-expanded="true"
+          >
+            Projects
+          </a>
+          <div
+            class="dropdown-menu"
+            aria-labelledby="navbarDropdown"
+          >
+            <a
+              class="dropdown-item"
+              href="#projectPageId"
+              data-slide-to="0"
+            >Robic Cube</a>
+            <a
+              class="dropdown-item"
+              href="#projectPageId"
+              data-slide-to="1"
+            >Search Algorithms</a>
+            <div class="dropdown-divider"></div>
+            <a
+              class="dropdown-item"
+              href="#projectPageId"
+              data-slide-to="2"
+            >Some Other Projects</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#aboutPageId"
+          >About</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#contactPageId"
+          >Contact</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="false"
+            aria-expanded="true"
+          >
+            Dark
+          </a>
+          <div
+            class="dropdown-menu"
+            aria-labelledby="navbarDropdown"
+          >
+            <a
+              class="dropdown-item"
+              href="#"
+            >Light</a>
+            <a
+              class="dropdown-item"
+              href="#"
+            >Dark</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!--#endregion-->
+
+  <!-- #region Main Content-->
+  <main
+    id="main_tag_id"
+    class="main_content"
+  >
+    <!--#region Cover Page---------------------------------------------------------------------------------------------->
+    <div
+      id="coverPageId"
+      class="cover_container position-relative"
+    >
+      <div class="conver_image"></div>
+      <div
+        class="position-absolute text-white cover_text_container"
+        in-view-animation="cover_text_container_show"
+      >
+        <h1 class="display-1">CODE AND COFFEES</h1>
+        <h2 class="display-4 mt-4">It's my website where you can check out my projects, read articles and get in
+          touch.</h2>
+      </div>
+    </div>
+    <!--#endregion-->
+
+    <!--#region Three Column Articles----------------------------------------------------------------------------------------->
+    <div
+      id="blogPageId"
+      class="row mx-1 justify-content-between overflow-hidden"
+    >
+      <h2 class="col-12 display-4 text-center p-3 p-md-5">My Favorites 'Quotes' From Clean Code Book</h2>
+      <article
+        class="col-sm-12 col-md-6 col-xl-3 d-flex flex-column border rounded-sm shadow-sm text-center mt-2 p-4 quotes_animation"
+        in-view-animation="quates_animation_show"
+      >
+        <p class="font-italic">
+          “Truth can only be found in one place: the code.”
+        </p>
+        <footer class="mt-auto blockquote-footer text-right">Robert C. Martin</footer>
+      </article>
+      <article
+        class="col-sm-12 col-md-5 col-xl-3 order-xl-3 d-flex flex-column border rounded-sm shadow-sm text-center mt-2 p-4 quotes_animation"
+        in-view-animation="quates_animation_show"
+      >
+        <p class="font-italic">“It is not enough for code to work.” </p>
+        <footer class="mt-auto blockquote-footer text-right">Robert C. Martin</footer>
+      </article>
+      <article
+        class="col-sm-12 col-md-12 col-xl-5 d-flex flex-column border rounded-sm shadow-sm text-center mt-2 p-4 quotes_animation"
+        in-view-animation="quates_animation_show"
+      >
+        <p class="font-italic">“So if you want to go fast, if you want to get done quickly, if you want your code to be
+          easy to write, make
+          it easy to read.” </p>
+        <footer class="mt-auto blockquote-footer text-right">Robert C. Martin</footer>
+      </article>
+    </div>
+    <!--#endregion-->
+
+    <!--#region Carousel------------------------------------------------------------------------------------------>
+    <div
+      id="projectPageId"
+      class="mt-3 mt-md-5"
+    >
+      <h2 class="display-4 mb-3 mb-md-5  text-center">My Projects</h2>
+      <div
+        id="myCustomCarouselId"
+        class="carousel slide mx-1 mt-2"
+        data-ride="carousel"
+        data-interval="2000"
+      >
+        <ol class="carousel-indicators">
+          <li
+            data-target="#myCustomCarouselId"
+            data-slide-to="0"
+            class="active"
+          ></li>
+          <li
+            data-target="#myCustomCarouselId"
+            data-slide-to="1"
+          ></li>
+          <li
+            data-target="#myCustomCarouselId"
+            data-slide-to="2"
+          ></li>
+        </ol>
+        <div class="carousel-inner">
+          <div
+            id="firstProjectId"
+            class="carousel-item active"
+          >
+            <img
+              src="./images/black-coffee-1.jpg"
+              class="d-block w-100 carousel_image"
+              alt="black coffee cup"
+            >
+            <div class="carousel-caption d-md-block">
+              <h5 class="display-4">Rubic Cube</h5>
+              <p>Just for fun!</p>
+            </div>
+          </div>
+          <div
+            id="secondProjectId"
+            class="carousel-item"
+          >
+            <img
+              src="./images/pure-coffee.jpg"
+              class="d-block w-100 carousel_image"
+              alt=""
+            >
+            <div class="carousel-caption d-md-block">
+              <h5 class="display-4">Search Algorithms</h5>
+              <p>Just to do what I say!</p>
+            </div>
+          </div>
+          <div
+            id="thirdProjectId"
+            class="carousel-item"
+          >
+            <img
+              src="./images/black-coffee-2.jpg"
+              class="d-block w-100 carousel_image"
+              alt="black coffee cup"
+            >
+            <div class="carousel-caption d-md-block">
+              <h5 class="display-4">Some Other Projects</h5>
+              <p>Any idea can become reality! when you are a programer!</p>
+            </div>
+          </div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#myCustomCarouselId"
+          role="button"
+          data-slide="prev"
+        >
+          <span
+            class="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span class="sr-only"></span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#myCustomCarouselId"
+          role="button"
+          data-slide="next"
+        >
+          <span
+            class="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <!--#endregion-->
+
+    <!--#region Side Nav------------------------------------------------------------------------------------------>
+    <div
+      id="aboutPageId"
+      class="row m-0"
+    >
+      <!--Side Section------------------------------------------------------------------------------------------>
+      <div class="col-md-3 col-lg-2 mr-0 mb-auto p-0 bg-dark">
+        <!--Title------------------------------------------------------------------------------------------>
+        <div class="position-relative text-center p-1 p-md-2 overflow-hidden">
+          <h1
+            id="aboutMeHeaderId"
+            class="position-relative d-inline-block lead font-weight-bold font-italic m-0 p-2 pills_header_animation"
+            in-view-animation="pills_header_animation_in"
+          >
+            <span class="pills_header_top_line pills_header_lines"></span>
+            <span class="pills_header_right_line pills_header_lines"></span>
+            About Me
+            <span class="pills_header_bottom_line pills_header_lines"></span>
+            <span class="pills_header_left_line pills_header_lines"></span>
+          </h1>
+        </div>
+        <!-- Side Nav -->
+        <nav
+          class="nav nav-justified flex-md-column nav-pills"
+          id="v-pills-tab"
+          role="tablist"
+          aria-orientation="vertical"
+        >
+          <a
+            class="nav-item nav-link rounded-0 active"
+            id="v-pills-who-am-i-tab"
+            data-toggle="pill"
+            href="#v-pills-who-am-i"
+            role="tab"
+            aria-controls="v-pills-who-am-i"
+            aria-selected="true"
+          >Who Am I</a>
+          <a
+            class="nav-item nav-link rounded-0"
+            id="v-pills-background-tab"
+            data-toggle="pill"
+            href="#v-pills-background"
+            role="tab"
+            aria-controls="v-pills-background"
+            aria-selected="true"
+          >Background</a>
+          <a
+            class="nav-item nav-link rounded-0"
+            id="v-pills-technical-skills-tab"
+            data-toggle="pill"
+            href="#v-pills-technical-skills"
+            role="tab"
+            aria-controls="v-pills-technical-skills"
+            aria-selected="false"
+          >Technical Skills</a>
+          <a
+            class="nav-item nav-link rounded-0"
+            id="v-pills-interest-tab"
+            data-toggle="pill"
+            href="#v-pills-interest"
+            role="tab"
+            aria-controls="v-pills-interest"
+            aria-selected="false"
+          >Interest</a>
+          <a
+            class="nav-item nav-link rounded-0"
+            id="v-pills-education-tab"
+            data-toggle="pill"
+            href="#v-pills-education"
+            role="tab"
+            aria-controls="v-pills-education"
+            aria-selected="false"
+          >Education</a>
+          <a
+            class="nav-item nav-link rounded-0"
+            id="v-pills-hobbies-tab"
+            data-toggle="pill"
+            href="#v-pills-hobbies"
+            role="tab"
+            aria-controls="v-pills-hobbies"
+            aria-selected="false"
+          >Hobbies</a>
+        </nav>
+      </div>
+      <!--Side Content -->
+      <div
+        class="col-md-9 col-lg-10 ml-0 p-3 tab-content overflow-hidden"
+        id="v-pills-tabContent"
+      >
+        <div
+          class="tab-pane fade show active"
+          id="v-pills-who-am-i"
+          role="tabpanel"
+          aria-labelledby="v-pills-who-am-i-tab"
+        >
+          <p>1_Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
+            line
+            in
+            section 1.10.32.
+
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="v-pills-background"
+          role="tabpanel"
+          aria-labelledby="v-pills-background-tab"
+        >
+          <p>2_Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
+            line
+            in
+            section 1.10.32.
+
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
+            line
+            in
+            section 1.10.32.
+
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+
+        </div>
+        <div
+          class="tab-pane fade"
+          id="v-pills-technical-skills"
+          role="tabpanel"
+          aria-labelledby="v-pills-technical-skills-tab"
+        >
+          <p>3_Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
+            line
+            in
+            section 1.10.32.
+
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
+            line
+            in
+            section 1.10.32.
+
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="v-pills-interest"
+          role="tabpanel"
+          aria-labelledby="v-pills-interest-tab"
+        >
+          <p>4_Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
+            line
+            in
+            section 1.10.32.
+
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
+            line
+            in
+            section 1.10.32.
+
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="v-pills-education"
+          role="tabpanel"
+          aria-labelledby="v-pills-education-tab"
+        >
+          <p>5_Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
+            line
+            in
+            section 1.10.32.
+
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            popular
+            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
+            line
+            in
+            section 1.10.32.
+
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="v-pills-education"
+          role="tabpanel"
+          aria-labelledby="v-pills-education-tab"
+        >
+          <p>4_Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="v-pills-hobbies"
+          role="tabpanel"
+          aria-labelledby="v-pills-hobbies-tab"
+        >
+          <p>6_Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            Lorem
+            Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable
+            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
+            Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+            classical
+            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+            Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+        </div>
+      </div>
+    </div>
+    <!--#endregion-->
+
+    <!--#region Get in tough------------------------------------------------------------------------------------>
+    <div class="social_parallax_background d-flex flex-column">
+      <div
+        id="contactPageId"
+        in-view-animation="social_parallax_text_show"
+        class="social_parallax_text mt-3 text-center text-white"
+      >
+        <h1 class="display-1">Be in touch!</h1>
+        <h3 class="display-4">I have to say some thing cool here!</h3>
+      </div>
+      <div class="align-self-stretch my-3">
+        <div
+          class="d-flex justify-content-around overflow-hidden text-white text-center"
+          in-view-animation="parallax_icons_show"
+        >
+          <a
+            href="https://github.com/fadiksho"
+            target="_blank"
+            class="parallax_icons mt-5 text-white"
+          >
+            <i class="icon-github-circled"></i>
+            <small class="social_icon_text text-white d-block">/fadi-ksho</small>
+          </a>
+          <a
+            href="https://twitter.com/FadyKsho"
+            target="_blank"
+            class="parallax_icons mt-5 text-white"
+          >
+            <i class="icon-twitter"></i>
+            <small class="social_icon_text text-white d-block">/fadiksho</small>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/fadi-ksho"
+            target="_blank"
+            class="parallax_icons mt-5 text-white"
+          >
+            <i class="icon-linkedin-squared"></i>
+
+            <small class="social_icon_text text-white d-block">@FadiKsho</small>
+          </a>
+
+        </div>
+      </div>
+      <!-- Contact Form -->
+      <div class="container my-5">
+        <h3 class="display-4 text-white text-center">Send Dircect Message :-)</h3>
+        <form
+          class="needs-validation"
+          novalidate
+        >
+          <div class="form-row">
+            <div class="col-md-6">
+              <label for="exampleInputEmail1">Email address *</label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+                required
+              >
+              <div class="invalid-feedback">
+                Email Addrees is requird.
+              </div>
+              <small
+                id="emailHelp"
+                class="form-text text-muted"
+              >I will never share your email with anyone else.</small>
+            </div>
+            <div class="col-md-6">
+              <label for="phoneNumberInputId">Phone Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="phoneNumberInputId"
+                aria-describedby="phoneHelp"
+                placeholder="Enter Phone Number"
+              >
+              <small
+                id="emailHelp"
+                class="form-text text-muted"
+              >I will never share your email with anyone else.</small>
+            </div>
+            <div class="col-12 mt-3">
+              <label for="contactMessageInputId">Message</label>
+              <textarea
+                class="form-control"
+                id="contactMessageInputId"
+                rows="3"
+                placeholder="Enter Message..."
+                required
+              ></textarea>
+              <div class="invalid-feedback">
+                Message is requird
+              </div>
+            </div>
+            <div class="col-12 mt-4 d-flex">
+              <button
+                type="submit"
+                class="btn btn-success w-100"
+              >SEND</button>
+              <button
+                type="button"
+                id="resetFormButtonId"
+                class="btn btn-danger ml-3"
+              >Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--#endregion-->
+  </main>
+  <!-- #endregion -->
+  <footer class="container pt-4 pb-2 overflow-hidden">
+    <div class="row mt-4 d-flex justify-content-around">
+      <!-- Resources & Follow-->
+      <div class="d-flex flex-column justify-content-around flex-md-row flex-md-grow-1">
+        <ul class="list-unstyled">
+          <li>
+            <h4>Resources</h4>
+          </li>
+          <li><a href="https://www.pexels.com/">Images</a></li>
+          <li>
+            Fonts
+            <ul>
+              <li><a
+                  href="https://fonts.google.com"
+                  target="_black"
+                >Google Fonts</a></li>
+              <li><a
+                  href="http://fontello.com/"
+                  target="_black"
+                >Fontello</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="list-unstyled">
+          <li>
+            <h4>Explore</h4>
+          </li>
+          <li><a href="">Home</a></li>
+          <li><a href="">Blog</a></li>
+          <li><a href="">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Explore & About-->
+      <div class="d-flex flex-column justify-content-around flex-md-row flex-md-grow-1">
+        <ul class="list-unstyled">
+          <li>
+            <h4>Follow</h4>
+          </li>
+          <li><a href="">Twitter</a></li>
+          <li><a href="">Github</a></li>
+          <li><a href="">LinkedIn</a></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li>
+            <h4>About</h4>
+          </li>
+          <li>fadiksho@gmail.com</li>
+          <li>+46 735739271</li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex align-items-baseline mt-3">
+      <span class="ml-auto display-4">&copy; Fadi Ksho 2019</span>
+      <button
+        id="scrollUpButtonId"
+        type="button"
+        class="go_up_button ml-auto btn btn-outline-secondary"
+      ><i class="icon-up-big"></i></button>
+    </div>
+  </footer>
+
+  <!-- #region Scripts -->
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"
+  ></script>
+  <script src="./js/index.js"></script>
+  <!-- #endregion -->
+  </script>
+</body>
+
+</html>

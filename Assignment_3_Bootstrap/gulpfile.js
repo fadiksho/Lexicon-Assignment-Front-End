@@ -1,17 +1,14 @@
 "use strict";
 
 var gulp = require("gulp"),
-  rimraf = require("rimraf"),
-  concat = require("gulp-concat"),
+  uglify = require("gulp-uglify"),
   sass = require("gulp-sass");
 
-// Development! Covert style sass to css
 gulp.task('sass', function () {
   return gulp.src(['./src/scss/*.scss', './src/scss/*/*.scss'])
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest('./src/css'));
 });
-// Production! Covert style sass to css
 gulp.task('sass:prod', function () {
   return gulp.src(['./src/scss/*.scss', './src/scss/*/*.scss'])
     .pipe(sass({
@@ -19,6 +16,12 @@ gulp.task('sass:prod', function () {
     }).on('error', sass.logError))
     .pipe(gulp.dest('./dist/css'));
 });
+gulp.task("js:prod", () => {
+  return gulp.src(['./src/js/index.js'])
+    .pipe(uglify())
+    .pipe(gulp.dest("./dist/js"));
+});
+gulp.task("prod", gulp.series(["sass:prod", "js:prod"]));
 
 gulp.task('sass:watch', function () {
   gulp.watch(['./src/scss/*.scss', './src/scss/*/*.scss'], gulp.series(["sass"]));

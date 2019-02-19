@@ -1,13 +1,13 @@
-@import '../scss/custom_bootstrap.scss';
+@import './custom_bootstrap';
 
 @font-face {
   font-family: 'fontello';
-  src: url("../../dist/font/fontello.eot");
-  src: url('../../dist/font/fontello.eot?94175240#iefix') format('embedded-opentype'),
-    url('../../dist/font/fontello.woff2?94175240') format('woff2'),
-    url('../../dist/font/fontello.woff?94175240') format('woff'),
-    url('../../dist/font/fontello.ttf?94175240') format('truetype'),
-    url('../../dist/font/fontello.svg?94175240#fontello') format('svg');
+  src: url("../fonts/fontello.eot");
+  src: url('../fonts/fontello.eot?94175240#iefix') format('embedded-opentype'),
+    url('../fonts/fontello.woff2?94175240') format('woff2'),
+    url('../fonts/fontello.woff?94175240') format('woff'),
+    url('../fonts/fontello.ttf?94175240') format('truetype'),
+    url('../fonts/fontello.svg?94175240#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -47,7 +47,7 @@
 }
 
 .conver_image {
-  background-image: url('../../dist/images/backgound_Cover.jpeg');
+  background-image: url('../images/backgound_Cover.jpg');
   min-height: 500px;
   overflow: hidden;
   background-repeat: no-repeat;
@@ -180,7 +180,7 @@
 
 // #region Fixed Background Parallax  ******************************
 .social_parallax_background {
-  background-image: url('../../dist/images/contact-keyboard.jpg');
+  background-image: url('../images/contact-keyboard.jpg');
   min-height: 500px;
   overflow: hidden;
   background-repeat: no-repeat;
@@ -253,7 +253,6 @@
 
 // #region Footer ****************************************************
 .go_up_button {
-
   opacity: 0.8;
   transition: opacity 0.3s;
 }
