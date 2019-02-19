@@ -45,14 +45,15 @@
     // Check if in view for each element
     elmentsToAnimate.each(function (index, element) {
       if (isScrolledIntoView($(this), 100)) {
-        // Get the class that will added to the element that are in view
+        console.log('test');
+        // Get the class that will be added to the element that are in view
         var animateClassToAdd = $(this).attr('in-view-animation');
         $(this).addClass(animateClassToAdd);
         // Remove the element after applying the class from the ovservation
         elmentsToAnimate = elmentsToAnimate.not(element);
         // If no element left to observe Unsbscribe from the scroll event
         if (elmentsToAnimate.length === 0) {
-          $(window).off('scroll resize');
+          $(window).off('scroll resize', checkIfInView);
         }
       }
     });
