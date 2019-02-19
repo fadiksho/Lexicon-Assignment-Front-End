@@ -3,7 +3,15 @@
 
 
 $enable-responsive-font-sizes: true;
+$font-size-base:1.1rem;
+
+// Theme
+@import './theme/theme.scss';
+
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
-.display-1, .display-2 .display-3, .display-4 {
+.display-1, .display-2, .display-3, .display-4 {
   font-family: 'Felipa', cursive;
+}
+.navbar-brand {
+  font-size: 1.5rem;
 }

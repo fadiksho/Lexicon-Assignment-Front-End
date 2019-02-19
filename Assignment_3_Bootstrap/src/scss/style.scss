@@ -12,21 +12,14 @@
   font-style: normal;
 }
 
-body {
-  height: 5000px;
-}
-
 // #region Nav ************************************************************************************
-.top_nav {
-  // height: 64px;
-}
-
 .navbar-nav {
   .dropdown-menu {
     right: 0;
     left: auto;
   }
 }
+
 // #endregion
 
 // Main
@@ -43,8 +36,14 @@ body {
 .cover_text_container {
   width: 100%;
   text-align: center;
-  top: 40%;
   transform: translateY(-50%);
+  top: 40%;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.cover_text_container_show {
+  opacity: 1;
 }
 
 .conver_image {
@@ -56,6 +55,7 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
+
 // #endregion
 
 // Carousel
@@ -63,9 +63,28 @@ body {
   max-height: 85vh;
 }
 
+// #region Quates
+.quotes_animation {
+  opacity: 0;
+  transition: opacity 0.5s, transform 1s;
+  transform: scale(0.7);
+  transition-delay: 0.3s;
+
+  &.quates_animation_show {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// #endregion
+
 // #region Side Nav ********************************************************
 // Header
 .pills_header_animation_in {
+  .pills_header_lines {
+    transition-duration: 0.8s;
+  }
+
   .pills_header_top_line {
     left: 0;
   }
@@ -105,8 +124,8 @@ body {
   position: absolute;
   display: block;
   background-color: black;
-  transition-duration: 0.5s;
-  transition-timing-function: cubic-bezier(1.000, 0.500, 0.000, 0.500);
+  transition-duration: 2s;
+  transition-timing-function: ease-out;
 }
 
 .pills_header_top_line {
@@ -171,7 +190,7 @@ body {
 }
 
 .social_parallax_text {
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.8s, opacity 0.8s;
   opacity: 0;
   transform: scale(3);
 }
@@ -187,12 +206,12 @@ body {
 .parallax_icons {
   font-size: calc(1.475rem + 2.7vw);
   opacity: 0;
-  transition: opacity 0.3s, transform 0.3s;
-  transform: scale(0.7);
+  transition: opacity 0.5s, transform 0.8s;
+  transform: scale(0.5);
 
   &:nth-child(2) {
     transition-delay: 0ms;
-    transform: scale(1.4);
+    transform: scale(1.8);
   }
 
   &:hover {
@@ -232,10 +251,23 @@ body {
 
 // #endregion
 
+// #region Footer ****************************************************
+.go_up_button {
+
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+// #endregion
+
 // #region Shared Classes ***************************************
 .sticky_nav {
   top: 55px;
   z-index: 1029;
+}
+
+.transition-delay {
+  transition-delay: 0.5s;
 }
 
 // Icons Classes
@@ -293,4 +325,5 @@ body {
   content: '\f30c';
   color: #fff;
 }
+
 // #endregion
