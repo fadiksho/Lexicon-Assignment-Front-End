@@ -1,6 +1,6 @@
 import {
-  TableGrid
-} from './TableGrid.js';
+  TileGridTable
+} from './TileGridTable.js';
 import { tileMap01 } from './SokobanBase.js';
 
 let selectedRenderingEngine = "table";
@@ -14,7 +14,7 @@ let gridHeight = (document.documentElement.clientHeight, window.innerHeight || 0
 let gridWidth = renderContainer.clientWidth;
 
 // Initial Table Grid
-const tableGrid = new TableGrid(tileMap01.mapGrid, gridWidth, gridHeight);
+const tableGrid = new TileGridTable(tileMap01.mapGrid, gridWidth, gridHeight);
 
 // Draw the table grid
 render('table');
@@ -40,7 +40,7 @@ for (let i = 0; i < gridRenderEngines.length; i++) {
 window.addEventListener('resize', function () {
   gridHeight = (document.documentElement.clientHeight, window.innerHeight || 0);
   gridWidth = renderContainer.clientWidth;
-  tableGrid.updateTileMapDimension(gridHeight, gridWidth);
+  tableGrid.updateTileGridDimension(gridHeight, gridWidth);
   setRenderEngineDimension();
 }, true);
 
@@ -49,7 +49,7 @@ function render(renderingEngine) {
   // clear the previouse render
   renderEngine.innerHTML = "";
   // create the table grid
-  let table = tableGrid.getTableTile;
+  let table = tableGrid.createTileMap();
   // add the new render
   renderEngine.appendChild(table);
   // set the width and height of the render
@@ -57,6 +57,6 @@ function render(renderingEngine) {
 }
 
 function setRenderEngineDimension() {
-  renderEngine.style.width = tableGrid.tileMapDimension + 'px';
-  renderEngine.style.height = tableGrid.tileMapDimension + 'px';
+  renderEngine.style.width = tableGrid.tileGridDimension + 'px';
+  renderEngine.style.height = tableGrid.tileGridDimension + 'px';
 }
