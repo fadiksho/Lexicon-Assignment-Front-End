@@ -6,6 +6,7 @@ module.exports = {
     main: ["./src/main.js"],
   },
   mode: "development",
+  devtool: 'inline-source-map',
   output: {
     filename: "[name]-bandle.js",
     path: path.resolve(__dirname, "../dist"),
@@ -64,7 +65,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpg|jpeg|png)$/,
+        test: /\.(jpg|jpeg|png|ico)$/,
         use: [{
           loader: "file-loader",
           options: {

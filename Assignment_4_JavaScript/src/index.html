@@ -14,9 +14,9 @@
   <link
     rel="icon"
     type="image/x-icon"
-    href="./favicon.ico"
+    href="./images/favicon.ico"
   >
-  <title>sokoban</title>
+  <title>Sokoban</title>
   <link
     rel="stylesheet"
     href="./css/main.css"
@@ -24,8 +24,158 @@
 </head>
 
 <body>
-  <h1>Hello World!!</h1>
+  <nav
+    id="toolBarId"
+    role="navigation"
+    class="navbar navbar-expand navbar-dark bg-primary"
+  >
+    <a
+      class="navbar-brand"
+      href="#coverPage"
+    >Sokoban-Demo</a>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#aboutPageId"
+        >About</a>
+      </li>
+    </ul>
+  </nav>
 
+  <main class="main_content">
+    <div class="container-fluid d-flex flex-column flex-md-row">
+      <div class="game_control mb-md-auto mb-3 mb-md-0">
+        <div class="mb-1 mb-md-2 d-flex flex-row align-items-center flex-md-column align-items-md-start">
+          <h5 class="mr-3">Collection</h5>
+          <select
+            class="form-control"
+            id="exampleFormControlSelect1"
+          >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <div class="mb-1 mb-md-2 d-flex flex-row align-items-center flex-md-column align-items-md-start">
+          <h5 class="mr-3">Moves</h5>
+          <div
+            class="d-flex flex-grow-1"
+            aria-label="moves navigation"
+          >
+            <button
+              type="button"
+              class="btn btn-secondary flex-grow-1 rounded-0 "
+            >&lt;&lt;</button>
+            <button
+              type="button"
+              class="btn btn-secondary flex-grow-1 rounded-0"
+            >&lt;</button>
+            <button
+              type="button"
+              class="btn btn-secondary flex-grow-1 rounded-0"
+            >12</button>
+            <button
+              type="button"
+              class="btn btn-secondary flex-grow-1 rounded-0"
+            >&gt;</button>
+            <button
+              type="button"
+              class="btn btn-secondary flex-grow-1 rounded-0"
+            >&gt;&gt;</button>
+          </div>
+        </div>
+        <div class="mb-2 mb-md-4 d-flex flex-row align-items-center align-items-md-start">
+          <h5 class="mr-3">Time:</h5>
+          <div>
+            <span class="text-success">32:45</span>
+          </div>
+        </div>
+        <button class="btn btn-warning btn-block rounded-0">Restart</button>
+      </div>
+      <div class="flex-grow-1 ml-md-3 overflow-hidden">
+        <nav
+          class="nav nav-pills nav-fill mb-2"
+          id="gridRenderingEnginesId"
+        >
+          <button
+            class="btn btn-link nav-item nav-link active"
+            toggle-rendering="table"
+          >Table</button>
+          <button
+            class="btn btn-link nav-item nav-link"
+            toggle-rendering="divs"
+          >Divs</button>
+          <button
+            class="btn btn-link nav-item nav-link"
+            toggle-rendering="canvas"
+          >Canvas</button>
+        </nav>
+        <div id="renderContainerId">
+          <div id="renderEngineId" class="my-0 mx-auto"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="container pt-4 pb-2 overflow-hidden">
+    <div class="row mt-4 d-flex justify-content-around">
+      <!-- Resources & Follow-->
+      <div class="d-flex flex-column justify-content-around flex-md-row flex-md-grow-1">
+        <ul class="list-unstyled">
+          <li>
+            <h4>Resources</h4>
+          </li>
+          <li><a href="https://www.gameart2d.com/free-graveyard-platformer-tileset.html">gameart2d</a></li>
+          <li><a
+              href="https://fonts.google.com"
+              target="_black"
+            >Google Fonts</a></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li>
+            <h4>Explore</h4>
+          </li>
+          <li><a href="">Table</a></li>
+          <li><a href="">Divs</a></li>
+          <li><a href="">Canvas</a></li>
+        </ul>
+      </div>
+      <!-- Explore & About-->
+      <div class="d-flex flex-column justify-content-around flex-md-row flex-md-grow-1">
+        <ul class="list-unstyled">
+          <li>
+            <h4>Follow</h4>
+          </li>
+          <li><a
+              href="https://twitter.com/FadyKsho"
+              target="_blank"
+            >Twitter</a></li>
+          <li><a
+              href="https://github.com/fadiksho"
+              target="_blank"
+            >Github</a></li>
+          <li><a
+              href="https://www.linkedin.com/in/fadi-ksho"
+              target="_blank"
+            >LinkedIn</a></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li>
+            <h4>About</h4>
+          </li>
+          <li>fadiksho@gmail.com</li>
+          <li>+46 735739271</li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-center mt-3">
+      <span class="display-4">&copy; Fadi Ksho 2019</span>
+    </div>
+  </footer>
   <script src="main-bandle.js"></script>
 </body>
 
