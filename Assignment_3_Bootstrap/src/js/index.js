@@ -17,6 +17,7 @@
     document.getElementById('resetFormButtonId').addEventListener('click', function () {
       var contactForms = document.getElementsByClassName('needs-validation');
       contactForms[0].classList.remove('was-validated');
+      contactForms[0].reset();
     }, false);
     // Scroll up button
     document.getElementById('scrollUpButtonId').addEventListener('click', function () {
