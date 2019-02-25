@@ -1,4 +1,8 @@
+import { Tile } from './Tile';
+
 const _tileGrid = Symbol();
+const _createTileMap = Symbol();
+
 const _rows = Symbol();
 const _columns = Symbol();
 const _tileGridDimension = Symbol();
@@ -11,7 +15,8 @@ export class TileGrid {
     if (tileGrid[0] === undefined || tileGrid[0].constructor !== Array) {
       throw new Error('invalid tile map');
     }
-    this[_tileGrid] = tileGrid;
+    
+    this[_tileGrid] = this[_createTileMap](tileGrid);
     this[_rows] = this[_tileGrid].length;
     this[_columns] = this[_tileGrid][0].length;
     this[_tileGridDimension] = Math.min(tileGridWidth, tileGridHeight);
@@ -23,6 +28,18 @@ export class TileGrid {
     let tileDimension = this[_tileGridDimension] / tileMapRib;
     let tileMapDimensionInPrecent = tileDimension / this[_tileGridDimension] * 100;
     return tileMapDimensionInPrecent;
+  }
+
+  [_createTileMap](tileGrid) {
+    let tileMap = [];
+    for (let i = 0; i < tileGrid.length; i++) {
+      let columns = [];
+      for (let j = 0; j < tileGrid[i].length; j++) {
+        columns.push(new Tile(tileGrid[i][j][0]));
+      }
+      tileMap.push(columns);
+    }
+    return tileMap;
   }
 
   get tileGrid() {
@@ -47,24 +64,6 @@ export class TileGrid {
 
   updateTileGridDimension(height, width) {
     this[_tileGridDimension] = Math.min(height, width);
-  }
-
-  getTileImageName(row, column) {
-    const tileType = this[_tileGrid][row][column][0];
-
-    switch (tileType) {
-      case 'W':
-        return 'w.png';
-      case 'B':
-        return 'b.png';
-      case 'P':
-        return 'p.png';
-      case 'G':
-        return 'g.png';
-      default:
-        return 'c.png';
-
-    }
   }
 
   createTileMap() {

@@ -1,29 +1,31 @@
 @import './custom_bootstrap.scss';
 
-.main_content {}
-
 #renderContainerId {
   height: 100%;
 }
 
-table {
-  table-layout: fixed;
-  width: 100%;
+.game_control {
+  position: sticky;
+  top: 1rem;
 }
 
 @include media-breakpoint-down(sm) {
   .game_control {
+    position: static;
+
     h5 {
       min-width: 100px;
     }
   }
 }
+
 tr {
   line-height: 0;
 }
 td {
-  padding: 0;
   display: inline-block;
+  padding: 0;
+
   img {
     width: 100%;
     height: auto;
