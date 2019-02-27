@@ -4,8 +4,8 @@ require("./favicon.ico");
 require("./js/start.js");
 
 // Assets
-require("./images/c.png");
-require("./images/w.png");
-require("./images/b.png");
-require("./images/p.png");
-require("./images/g.png");
+require("./images/emptyTile.png");
+require("./images/wall.png");
+require("./images/crate.png");
+require("./images/player.png");
+require("./images/correctTile.png");
