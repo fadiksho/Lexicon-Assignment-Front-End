@@ -1,7 +1,9 @@
 import {
   TileGridTable
 } from './TileGridTable.js';
-import { tileMap01 } from './SokobanBase.js';
+import {
+  tileMap01
+} from './SokobanBase.js';
 
 let selectedRenderingEngine = "table";
 
@@ -43,6 +45,35 @@ window.addEventListener('resize', function () {
   tableGrid.updateTileGridDimension(gridHeight, gridWidth);
   setRenderEngineDimension();
 }, true);
+
+// key event only for the game board
+renderContainer.addEventListener('keydown', function (e) {
+  captureKey(e);
+});
+
+function captureKey(keyBoardEvent) {
+  keyBoardEvent.preventDefault();
+  switch (keyBoardEvent.keyCode) {
+    // left
+    case 37:
+      tableGrid.move(tableGrid.player.xPosition, tableGrid.player.yPosition, 0, -1);
+      break;
+      // top
+    case 38:
+      tableGrid.move(tableGrid.player.xPosition, tableGrid.player.yPosition, -1, 0);
+      break;
+      // right
+    case 39:
+      tableGrid.move(tableGrid.player.xPosition, tableGrid.player.yPosition, 0, 1);
+      break;
+      // bottom
+    case 40:
+      tableGrid.move(tableGrid.player.xPosition, tableGrid.player.yPosition, 1, 0);
+      break;
+    default:
+      break;
+  }
+}
 
 // draw the table grid
 function render(renderingEngine) {
