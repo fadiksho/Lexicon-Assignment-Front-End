@@ -3,6 +3,7 @@ import {
 } from './TileGrid.js';
 
 const _table = Symbol();
+const _updateCellImage = Symbol();
 export class TileGridTable extends TileGrid {
 
   constructor(tileMap, tileMapWidth, tileMapHeight) {
@@ -11,7 +12,6 @@ export class TileGridTable extends TileGrid {
 
   createTileMap() {
     let tableGrid = document.createElement('table');
-    let tablebody = document.createElement('tbody');
     // Create the table body (rows, columns)
     for (let i = 0; i < super.rows; i++) {
       let tr = document.createElement('tr');
@@ -28,10 +28,8 @@ export class TileGridTable extends TileGrid {
         td.appendChild(tile);
         tr.appendChild(td);
       }
-      tablebody.appendChild(tr);
+      tableGrid.appendChild(tr);
     }
-
-    tableGrid.appendChild(tablebody);
 
     this[_table] = tableGrid;
 
@@ -40,13 +38,48 @@ export class TileGridTable extends TileGrid {
 
   move(x, y, xDirection, yDirection) {
     const movement = super.buildMovement(x, y, xDirection, yDirection);
-    if (movement.length <= 0) {
-      return false;
+    
+    console.log(super.tileGrid);
+    if (movement.length > 0) {
+      this.doNextMovement(movement, xDirection, yDirection);
     }
-    else {
-      for (let i = movement.length - 1; i >= 1; i--) {
-        console.log(movement[i]);
-      }
+  }
+
+  doNextMovement(movement, xDirection, yDirection) {
+    for (let i = movement.length - 1; i >= 0; i--) {
+      // update the tile
+      let x = movement[i].row + xDirection;
+      let y = movement[i].column + yDirection;
+      let tile = super.getTile(movement[i].row, movement[i].column);
+      let targetTile = super.getTile(x, y);
+
+      targetTile.hostImage = tile.hostImage;
+      targetTile.type = tile.type;
+      tile.hostImage = ' ';
+      tile.type = targetTile.type;
+      // draw
+      this[_updateCellImage](tile);
+      this[_updateCellImage](targetTile);
+    }
+    // update player location
+    super.player.xPosition += xDirection;
+    super.player.yPosition += yDirection;
+  }
+
+  doPreviuseMovement(movement, xDirection, yDirection) {
+    // xDirection = xDirection * -1;
+    // yDirection = yDirection * -1;
+    // for (let i = 0; i < movement.length; i++) {
+    //   this[_getCell](xDirection, yDirection);
+    // }
+  }
+
+  [_updateCellImage](tile) {
+    let tileImage = this[_table].rows[tile.row].cells.item(tile.column).firstChild;
+    if (tile.containHost) {
+      tileImage.src = `./images/${tile.hostImage}`;
+    } else {
+      tileImage.src = `./images/${tile.tileImage}`;
     }
   }
 }

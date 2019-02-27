@@ -43,6 +43,8 @@ export class Tile {
       }
       else if (type === 'P') {
         this[_hostImage] = 'player.png';
+        // reset the type to ' ' empty tile
+        this.type = ' ';
       }
     }
   }

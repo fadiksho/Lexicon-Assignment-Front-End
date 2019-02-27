@@ -6,13 +6,13 @@ import {
 } from './Player';
 const _tileGrid = Symbol();
 const _createTileMap = Symbol();
-
 const _rows = Symbol();
 const _columns = Symbol();
 const _tileGridDimension = Symbol();
 const _tileDimensionInPrecent = Symbol();
 const _calculateTileDimensionInPrecent = Symbol();
 const _player = Symbol();
+
 export class TileGrid {
 
   constructor(tileGrid, tileGridWidth, tileGridHeight) {
@@ -119,23 +119,25 @@ export class TileGrid {
       (yTarget < 0 || yTarget >= this[_tileGrid][xTarget].length)) {
       return null;
     }
-
+    let tile = this.getTile(x, y);
     let targetTile = this.getTile(xTarget, yTarget);
     // if target is wall don't move
     if (targetTile.type === 'W') return [];
+    // when we have to boxes
+    if (targetTile.type === 'B' && tile.type === targetTile.type) return [];
     // if the target is empty and doesn't contain a tile
     else if (targetTile.type === ' ' && targetTile.containHost === false) {
-      previousMovement.push(targetTile);
+      previousMovement.push(tile);
       return previousMovement;
-    } 
+    }
     // if the target is correct and doesn't contain a tile
     else if (targetTile.type === 'G' && targetTile.containHost === false) {
-      previousMovement.push(targetTile);
+      previousMovement.push(tile);
       return previousMovement;
-    } 
+    }
     // target is crate check if the crate can move
     else {
-      previousMovement.push(targetTile);
+      previousMovement.push(tile);
       return this.buildMovement(xTarget, yTarget, xDirection, yDirection, previousMovement);
     }
   }
