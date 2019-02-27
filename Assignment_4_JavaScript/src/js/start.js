@@ -89,5 +89,4 @@ function render(renderingEngine) {
 
 function setRenderEngineDimension() {
   renderEngine.style.width = tableGrid.tileGridDimension + 'px';
-  renderEngine.style.height = tableGrid.tileGridDimension + 'px';
 }
