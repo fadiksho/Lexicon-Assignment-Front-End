@@ -2,8 +2,12 @@ import {
   TileGridTable
 } from './TileGridTable.js';
 import {
-  tileMap01
+  tileMaps
 } from './SokobanBase.js';
+
+import {
+  Sokoban
+} from './Sokoban.js';
 
 let selectedRenderingEngine = "table";
 
@@ -11,15 +15,15 @@ let gridRender = document.getElementById('gridRenderingEnginesId');
 let gridRenderEngines = gridRender.getElementsByTagName('button');
 let renderContainer = document.getElementById('renderContainerId');
 let renderEngine = document.getElementById('renderEngineId');
-
+let movesHistoryButtons = document.getElementById('movesHistoryButtonsId').getElementsByTagName('button');
+let movementIndex = document.getElementById('movementIndexId');
 let gridHeight = (document.documentElement.clientHeight, window.innerHeight || 0);
 let gridWidth = renderContainer.clientWidth;
-
 // Initial Table Grid
-const tableGrid = new TileGridTable(tileMap01.mapGrid, gridWidth, gridHeight);
-
-// Draw the table grid
+const sokoban = new Sokoban(tileMaps, gridWidth, gridHeight);
+// default to tableRendering
 render('table');
+movementIndex.innerText = sokoban.gameControl.currentMoveCount;
 
 // Add click event for each rendering engine
 for (let i = 0; i < gridRenderEngines.length; i++) {
@@ -33,16 +37,23 @@ for (let i = 0; i < gridRenderEngines.length; i++) {
       // Update the selected rendering engine
       selectedRenderingEngine = renderingEngine;
 
-      render(selectedRenderingEngine);
+      sokoban.setRenderEngine(selectedRenderingEngine);
     }
   });
 }
-
+// Add click event for the moves buttons
+for (let i = 0; i < movesHistoryButtons.length; i++) {
+  movesHistoryButtons[i].addEventListener('click', function () {
+    const moveAmount = movesHistoryButtons[i].getAttribute("move-amount");
+    sokoban.playMove(parseInt(moveAmount));
+    movementIndex.innerText = sokoban.gameControl.currentMoveCount;
+  });
+}
 // Update the render engine dimension when resize
 window.addEventListener('resize', function () {
   gridHeight = (document.documentElement.clientHeight, window.innerHeight || 0);
   gridWidth = renderContainer.clientWidth;
-  tableGrid.updateTileGridDimension(gridHeight, gridWidth);
+  sokoban.tileGrid.updateTileGridDimension(gridHeight, gridWidth);
   setRenderEngineDimension();
 }, true);
 
@@ -56,37 +67,42 @@ function captureKey(keyBoardEvent) {
   switch (keyBoardEvent.keyCode) {
     // left
     case 37:
-      tableGrid.move(tableGrid.player.xPosition, tableGrid.player.yPosition, 0, -1);
+      sokoban.move(0, -1);
+      movementIndex.innerText = sokoban.gameControl.currentMoveCount;
       break;
       // top
     case 38:
-      tableGrid.move(tableGrid.player.xPosition, tableGrid.player.yPosition, -1, 0);
+      sokoban.move(-1, 0);
+      movementIndex.innerText = sokoban.gameControl.currentMoveCount;
       break;
       // right
     case 39:
-      tableGrid.move(tableGrid.player.xPosition, tableGrid.player.yPosition, 0, 1);
+      sokoban.move(0, 1);
+      movementIndex.innerText = sokoban.gameControl.currentMoveCount;
       break;
       // bottom
     case 40:
-      tableGrid.move(tableGrid.player.xPosition, tableGrid.player.yPosition, 1, 0);
+      sokoban.move(1, 0);
+      movementIndex.innerText = sokoban.gameControl.currentMoveCount;
       break;
     default:
       break;
   }
 }
 
-// draw the table grid
+// draw the grid
 function render(renderingEngine) {
+  sokoban.setRenderEngine(renderingEngine);
   // clear the previouse render
   renderEngine.innerHTML = "";
   // create the table grid
-  let table = tableGrid.createTileMap();
+  let tileMap = sokoban.createTileMap();
   // add the new render
-  renderEngine.appendChild(table);
+  renderEngine.appendChild(tileMap);
   // set the width and height of the render
   setRenderEngineDimension();
 }
 
 function setRenderEngineDimension() {
-  renderEngine.style.width = tableGrid.tileGridDimension + 'px';
+  renderEngine.style.width = sokoban.tileGridDimension + 'px';
 }

@@ -1,51 +1,77 @@
 const _tileImage = Symbol();
 const _hostImage = Symbol();
 const _initialzeTile = Symbol();
-
+const _hostType = Symbol();
+const _type = Symbol();
+const _updateTileImage = Symbol();
 export class Tile {
 
   constructor(type, row, column) {
-    this.type = type;
     this.row = row;
     this.column = column;
     this[_hostImage] = ' ';
     this[_initialzeTile](type);
   }
 
+  get type() {
+    return this[_type];
+  }
+
+  set hostType(hostType) {
+    this[_hostType] = hostType;
+    // after the hostType change update the tile image
+    this[_updateTileImage]();
+  }
+
+  get hostType() {
+    return this[_hostType];
+  }
+
   get tileImage() {
     return this[_tileImage];
   }
 
-  get hostImage() {
-    return this[_hostImage];
-  }
-
-  set hostImage(hostImage) {
-    this[_hostImage] = hostImage;
-  }
-
-  get containHost() {
-    return this[_hostImage] !== ' ';
+  get canContainHost() {
+    return this[_hostType] === ' ';
   }
 
   [_initialzeTile](type) {
-    this[_hostImage] = ' ';
     if (type === 'G') {
-      this[_tileImage] = 'correctTile.png';
+      this[_type] = 'G';
+      this.hostType = ' ';
+    } else if (type === 'W') {
+      this[_type] = 'W';
+      this.hostType = 'W';
+    } else if (type === 'B') {
+      this[_type] = ' ';
+      this.hostType = 'B';
+    } else if (type === 'P') {
+      this[_type] = ' ';
+      this.hostType = 'P';
+    } else {
+      this[_type] = ' ';
+      this.hostType = ' ';
     }
-    else if (type === 'W'){
-      this[_tileImage] = 'wall.png';
-    }
-    else {
-      this[_tileImage] = 'emptyTile.png';
-      if (type === 'B') {
-        this[_hostImage] = 'crate.png';
-      }
-      else if (type === 'P') {
-        this[_hostImage] = 'player.png';
-        // reset the type to ' ' empty tile
-        this.type = ' ';
-      }
+  }
+
+  [_updateTileImage]() {
+    let type = this[_hostType] !== ' ' ? this[_hostType] : this[_type];
+    switch (type) {
+      case 'W':
+        this[_tileImage] = 'wall.png';
+        break;
+      case 'B':
+        this[_tileImage] = 'box.png';
+        break;
+      case 'P':
+        this[_tileImage] = 'player.png';
+        break;
+      case 'G':
+        this[_tileImage] = 'goal.png';
+        break;
+      default:
+        this[_tileImage] = 'emptyTile.png';
+        break;
     }
   }
 }

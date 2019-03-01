@@ -12,13 +12,10 @@ const _tileGridDimension = Symbol();
 const _tileDimensionInPrecent = Symbol();
 const _calculateTileDimensionInPrecent = Symbol();
 const _player = Symbol();
-
+const _goalTiles = Symbol();
 export class TileGrid {
 
   constructor(tileGrid, tileGridWidth, tileGridHeight) {
-    if (tileGrid[0] === undefined || tileGrid[0].constructor !== Array) {
-      throw new Error('invalid tile map');
-    }
 
     this[_tileGrid] = this[_createTileMap](tileGrid);
     this[_rows] = this[_tileGrid].length;
@@ -36,17 +33,25 @@ export class TileGrid {
 
   [_createTileMap](tileGrid) {
     let tileMap = [];
+    this[_goalTiles] = [];
     for (let i = 0; i < tileGrid.length; i++) {
       let columns = [];
       for (let j = 0; j < tileGrid[i].length; j++) {
+        let tile = new Tile(tileGrid[i][j][0], i, j);
         if (tileGrid[i][j][0] === 'P') {
           this[_player] = new Player(i, j);
+        } else if (tileGrid[i][j][0] === 'G') {
+          this[_goalTiles].push(tile);
         }
-        columns.push(new Tile(tileGrid[i][j][0], i, j));
+        columns.push(tile);
       }
       tileMap.push(columns);
     }
     return tileMap;
+  }
+
+  get player() {
+    return this[_player];
   }
 
   get tileGrid() {
@@ -69,10 +74,6 @@ export class TileGrid {
     return this[_tileDimensionInPrecent];
   }
 
-  get player() {
-    return this[_player];
-  }
-
   getTile(x, y) {
     return this[_tileGrid][x][y];
   }
@@ -81,58 +82,31 @@ export class TileGrid {
     this[_tileGridDimension] = Math.min(height, width);
   }
 
-  createTileMap() {
-    throw new Error('Not Implemented Exception: createTileMap().');
-  }
-
-  canMoveToTile(x, y, xDirection, yDirection) {
-    // row
-    let xTarget = x + xDirection;
-    // column
-    let yTarget = y + yDirection;
-    // Check if the target location is inside the grid
-    if ((xTarget < 0 || xTarget >= this[_tileGrid].length) ||
-      (yTarget < 0 || yTarget >= this[_tileGrid][xTarget].length)) {
-      return false;
-    }
-
-    let targetTile = this.getTile(xTarget, yTarget);
-    // if target is wall don't move
-    if (targetTile.type === 'W') return false;
-    // if the target is empty and doesn't contain a tile
-    else if (targetTile.type === ' ' && targetTile.containHost === false) return true;
-    // if the target is correct and doesn't contain a tile
-    else if (targetTile.type === 'G' && targetTile.containHost === false) return true;
-    // target is crate check if the crate can move
-    else {
-      return this.canMoveToTile(xTarget, yTarget, xDirection, yDirection);
-    }
-  }
-
+  // return list of movement
   buildMovement(x, y, xDirection, yDirection, previousMovement = []) {
-    // row
     let xTarget = x + xDirection;
-    // column
     let yTarget = y + yDirection;
     // Check if the target location is inside the grid
     if ((xTarget < 0 || xTarget >= this[_tileGrid].length) ||
       (yTarget < 0 || yTarget >= this[_tileGrid][xTarget].length)) {
-      return null;
+      return [];
     }
     let tile = this.getTile(x, y);
     let targetTile = this.getTile(xTarget, yTarget);
     // if target is wall don't move
     if (targetTile.type === 'W') return [];
-    // when we have to boxes
-    if (targetTile.type === 'B' && tile.type === targetTile.type) return [];
+    // when we have two boxes
+    if (tile.hostType === 'B' && targetTile.hostType === 'B') return [];
     // if the target is empty and doesn't contain a tile
-    else if (targetTile.type === ' ' && targetTile.containHost === false) {
+    else if (targetTile.type === ' ' && targetTile.canContainHost === true) {
       previousMovement.push(tile);
+      previousMovement.push(targetTile);
       return previousMovement;
     }
     // if the target is correct and doesn't contain a tile
-    else if (targetTile.type === 'G' && targetTile.containHost === false) {
+    else if (targetTile.type === 'G' && targetTile.canContainHost === true) {
       previousMovement.push(tile);
+      previousMovement.push(targetTile);
       return previousMovement;
     }
     // target is crate check if the crate can move
@@ -140,5 +114,9 @@ export class TileGrid {
       previousMovement.push(tile);
       return this.buildMovement(xTarget, yTarget, xDirection, yDirection, previousMovement);
     }
+  }
+
+  isGameEnd() {
+    return this[_goalTiles].filter(t => t.hostType !== 'B').length === 0;
   }
 }

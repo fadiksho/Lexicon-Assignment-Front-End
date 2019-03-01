@@ -60,25 +60,30 @@
           <div
             class="d-flex flex-grow-1"
             aria-label="moves navigation"
+            id="movesHistoryButtonsId"
           >
             <button
               type="button"
+              move-amount="-10"
               class="btn btn-secondary flex-grow-1 rounded-0 "
             >&lt;&lt;</button>
             <button
               type="button"
+              move-amount="-1"
               class="btn btn-secondary flex-grow-1 rounded-0"
             >&lt;</button>
+            <span
+              id="movementIndexId"
+              class="btn btn-dark disabled flex-grow-1 rounded-0"
+            >12</span>
             <button
               type="button"
               class="btn btn-secondary flex-grow-1 rounded-0"
-            >12</button>
-            <button
-              type="button"
-              class="btn btn-secondary flex-grow-1 rounded-0"
+              move-amount="1"
             >&gt;</button>
             <button
               type="button"
+              move-amount="10"
               class="btn btn-secondary flex-grow-1 rounded-0"
             >&gt;&gt;</button>
           </div>
