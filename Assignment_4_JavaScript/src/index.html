@@ -40,7 +40,11 @@
   </nav>
 
   <main class="main_content">
-    <div class="container-fluid d-flex flex-column flex-md-row">
+    <div
+      id="gameContainerId"
+      tabindex="0"
+      class="container-fluid d-flex flex-column flex-md-row"
+    >
       <div class="game_control mt-1 mt-md-3 mb-md-auto mb-3 mb-md-0">
         <div class="mb-1 mb-md-2 d-flex flex-row align-items-center flex-md-column align-items-md-start">
           <h5 class="mr-3">Collection</h5>
@@ -65,26 +69,27 @@
             <button
               type="button"
               move-amount="-10"
-              class="btn btn-secondary flex-grow-1 rounded-0 "
+              class="btn btn-secondary btn-sm flex-grow-1 rounded-0 "
             >&lt;&lt;</button>
             <button
               type="button"
               move-amount="-1"
-              class="btn btn-secondary flex-grow-1 rounded-0"
+              class="btn btn-secondary btn-sm flex-grow-1 rounded-0"
             >&lt;</button>
             <span
               id="movementIndexId"
-              class="btn btn-dark disabled flex-grow-1 rounded-0"
-            >12</span>
+              style="min-width: 40px;"
+              class="btn btn-dark px-0 disabled flex-grow-1 rounded-0"
+            >0</span>
             <button
               type="button"
-              class="btn btn-secondary flex-grow-1 rounded-0"
+              class="btn btn-secondary btn-sm flex-grow-1 rounded-0"
               move-amount="1"
             >&gt;</button>
             <button
               type="button"
               move-amount="10"
-              class="btn btn-secondary flex-grow-1 rounded-0"
+              class="btn btn-secondary btn-sm flex-grow-1 rounded-0"
             >&gt;&gt;</button>
           </div>
         </div>
@@ -94,7 +99,7 @@
             <span class="text-success">32:45</span>
           </div>
         </div>
-        <button class="btn btn-warning btn-block rounded-0">Restart</button>
+        <button id="restartButtonId" class="btn btn-warning btn-block rounded-0">Restart</button>
       </div>
       <div class="flex-grow-1 ml-md-3 overflow-hidden">
         <nav
@@ -114,7 +119,10 @@
             toggle-rendering="canvas"
           >Canvas</button>
         </nav>
-        <div id="renderContainerId" class="my-3" tabindex="0">
+        <div
+          id="renderContainerId"
+          class="my-3"
+        >
           <div
             id="renderEngineId"
             class="my-0 mx-auto"
@@ -124,7 +132,10 @@
     </div>
   </main>
 
-  <footer id="about" class="container pt-4 pb-2 overflow-hidden border-top">
+  <footer
+    id="about"
+    class="container pt-4 pb-2 overflow-hidden border-top"
+  >
     <div class="row mt-4 d-flex justify-content-around">
       <!-- Resources & Follow-->
       <div class="d-flex flex-column justify-content-around flex-md-row flex-md-grow-1">

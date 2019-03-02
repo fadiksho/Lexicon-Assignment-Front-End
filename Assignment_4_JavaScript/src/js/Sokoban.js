@@ -9,27 +9,31 @@ import {
 } from './GameControls.js';
 
 const _tileMaps = Symbol();
+const _selectedMap = Symbol();
 const _tileGrid = Symbol();
 const _renderEngine = Symbol();
+const _playMoves = Symbol();
 const _gameControl = Symbol();
-
 export class Sokoban {
   constructor(tileMaps, width, height) {
     this[_tileMaps] = tileMaps;
-    this[_tileGrid] = new TileGrid(tileMaps[2].mapGrid, width, height);
+    this[_selectedMap] = tileMaps[0];
+    this[_tileGrid] = new TileGrid(this[_selectedMap].mapGrid, width, height);
     this[_gameControl] = new GameControl();
   }
 
+  [_playMoves](moves) {
+    moves.forEach(move => {
+      this.tileGrid.applyMovement(move);
+      this[_renderEngine].updateTiles(move);
+    });
+  }
+
   move(xDirection, yDirection) {
-    const x = this.tileGrid.player.xPosition;
-    const y = this.tileGrid.player.yPosition;
-    const movement = this.tileGrid.buildMovement(x, y, xDirection, yDirection);
-    console.log(movement);
-    if (movement.length > 0) {
-      this.gameControl.saveMove(movement);
-      this[_renderEngine].doNextMovement(movement);
-      this.tileGrid.player.xPosition += xDirection;
-      this.tileGrid.player.yPosition += yDirection;
+    let move = this.tileGrid.buildMovement(xDirection, yDirection);
+    if (move.length > 0) {
+      this[_playMoves]([move]);
+      this.gameControl.saveMove(move);
     }
   }
 
@@ -42,47 +46,22 @@ export class Sokoban {
   }
   // +1, -1, +10, -10
   playMove(value) {
-    // Move Next
-    if (value > 0 && this.gameControl.canPlay(value)) {
-      const movements = this.gameControl.getMove(value);
-      movements.forEach(move => {
-        const x = this.tileGrid.player.xPosition;
-        const y = this.tileGrid.player.yPosition;
-        const xDirection = x - move[0].row;
-        const yDirection = y - move[0].column;
-        console.log(move);
-        console.log({
-          xDirection,
-          yDirection
-        });
-      });
-      // this[_renderEngine].doNextMovement(movement, xDirection, yDirection);
+    let moves = this.gameControl.getMove(value);
+
+    if (value < -1) {
+      moves.reverse();
     }
-    // Move Back
-    else if (value < 0 && this.gameControl.canPlay(value)) {
-      const movements = this.gameControl.getMove(value);
-      movements.forEach(move => {
-        const x = this.tileGrid.player.xPosition;
-        const y = this.tileGrid.player.yPosition;
-        const xDirection = move[0].row - x;
-        const yDirection = move[0].column - y;
-        console.log(move);
-        console.log({
-          xDirection,
-          yDirection
-        });
-        this[_renderEngine].doPreviousMovement(move);
-        this.tileGrid.player.xPosition += xDirection;
-        this.tileGrid.player.yPosition += yDirection;
-      });
-    }
+    this[_playMoves](moves);
   }
 
-  playSeriesOfMove(value) {
-
-  }
   restart() {
-    // ToDo: reset the game state
+    let tileGridDimension = this[_tileGrid].tileGridDimension;
+    this[_tileGrid] = new TileGrid(this[_selectedMap].mapGrid, tileGridDimension, tileGridDimension);
+    this[_gameControl] = new GameControl();
+  }
+
+  getMap(){
+    return 
   }
 
   selectMap(mapName) {
@@ -93,7 +72,7 @@ export class Sokoban {
     switch (renderEngine) {
       case 'table':
         // set default rendering to table
-        this[_renderEngine] = new TileGridTable(this[_tileGrid]);
+        this[_renderEngine] = new TileGridTable(this.tileGrid);
         // change render
         break;
       case 'divs':
@@ -101,7 +80,7 @@ export class Sokoban {
         break;
       default:
         // set default to table
-        this[_renderEngine] = new TileGridTable(this[_tileGrid]);
+        this[_renderEngine] = new TileGridTable(this.tileGrid);
         break;
     }
   }
