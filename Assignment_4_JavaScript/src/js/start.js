@@ -8,6 +8,7 @@ import {
 import {
   Sokoban
 } from './Sokoban.js';
+import { GameEvent } from './GameEvent.js';
 
 let selectedRenderingEngine = "table";
 
@@ -19,10 +20,12 @@ let renderEngine = document.getElementById('renderEngineId');
 let movesHistoryButtons = document.getElementById('movesHistoryButtonsId').getElementsByTagName('button');
 let restartButton = document.getElementById('restartButtonId');
 let movementIndex = document.getElementById('movementIndexId');
+let time = document.getElementById('timeId');
 let gridHeight = (document.documentElement.clientHeight, window.innerHeight || 0);
 let gridWidth = renderContainer.clientWidth;
 // Initial Table Grid
 const sokoban = new Sokoban(tileMaps, gridWidth, gridHeight);
+
 // default to tableRendering
 render(selectedRenderingEngine);
 movementIndex.innerText = sokoban.gameControl.indexMove;
@@ -65,16 +68,21 @@ window.addEventListener('resize', function () {
 gameContainer.addEventListener('keydown', function (e) {
   captureKey(e);
 });
-
+// Restart Button
 restartButton.addEventListener('click', function() {
   sokoban.restart();
   render(selectedRenderingEngine);
   movementIndex.innerText = sokoban.gameControl.indexMove;
 });
-
+// Update Time
+GameEvent.addEventListener('timeChangeEvent', function() {
+  time.innerText = sokoban.gameControl.timeDuration;
+});
+// Focus on the grid to recive key input after page load
 window.addEventListener('load', function () {
   gameContainer.focus();
 });
+
 function captureKey(keyBoardEvent) {
   keyBoardEvent.preventDefault();
   switch (keyBoardEvent.keyCode) {
@@ -102,7 +110,6 @@ function captureKey(keyBoardEvent) {
       break;
   }
 }
-
 // draw the grid
 function render(renderingEngine) {
   sokoban.setRenderEngine(renderingEngine);

@@ -57,11 +57,11 @@ export class Sokoban {
   restart() {
     let tileGridDimension = this[_tileGrid].tileGridDimension;
     this[_tileGrid] = new TileGrid(this[_selectedMap].mapGrid, tileGridDimension, tileGridDimension);
-    this[_gameControl] = new GameControl();
+    this.gameControl.reset();
   }
 
   getMap(){
-    return 
+    return;
   }
 
   selectMap(mapName) {
