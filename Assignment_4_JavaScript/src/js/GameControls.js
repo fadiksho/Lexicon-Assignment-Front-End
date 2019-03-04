@@ -10,11 +10,11 @@ const _currentMoveCount = Symbol();
 const _interval = Symbol();
 const _isTimeRunning = Symbol();
 const _startTimer = Symbol();
-const _stopTimer = Symbol();
 const _counter = Symbol();
 const _updateTime = Symbol();
 const _timeChangeEvent = Symbol();
-const _timeStopEvent = Symbol();
+const _indexMoveChangeEvent = Symbol();
+
 export class GameControl {
 
   constructor() {
@@ -27,10 +27,9 @@ export class GameControl {
     // Register timeChangeEvent
     this[_timeChangeEvent] = new SimpleEvent('timeChangeEvent');
     GameEvent.events['timeChangeEvent'] = this[_timeChangeEvent];
-    // Register timeStopEvent
-    this[_timeStopEvent] = new SimpleEvent('timeStopEvent');
-    GameEvent.events['timeStopEvent'] = this[_timeStopEvent];
-    GameEvent.addEventListener('timeStopEvent', this[_stopTimer]);
+    // Register indexMoveChangeEvent
+    this[_indexMoveChangeEvent] = new SimpleEvent('indexMoveChangeEvent');
+    GameEvent.events['indexMoveChangeEvent'] = this[_indexMoveChangeEvent];
   }
 
   [_updateTime]() {
@@ -43,7 +42,7 @@ export class GameControl {
     this[_seconds] = this[_counter];
   }
 
-  [_stopTimer]() {
+  stopTimer() {
     this[_isTimeRunning] = false;
     clearInterval(this[_interval]);
     GameEvent.dispatchEvent('timeChangeEvent');
@@ -71,7 +70,6 @@ export class GameControl {
       minutes = "0" + minutes;
     }
     return `${minutes}:${seconds}`;
-
   }
 
   // get the current index move
@@ -81,6 +79,8 @@ export class GameControl {
   // set the current index move
   set indexMove(value) {
     this[_indexMove] = value;
+    // trigger the indexMoveChangeEvent
+    GameEvent.dispatchEvent('indexMoveChangeEvent');
   }
 
   // get the max moves
@@ -105,7 +105,6 @@ export class GameControl {
 
   // save the move
   saveMove(movement) {
-
     // start the timer after the first move
     this[_startTimer]();
     // remove steps if there is once after the player moved
@@ -115,7 +114,7 @@ export class GameControl {
     );
 
     this[_historyMovement].push(movement);
-    this[_indexMove] += 1;
+    this.indexMove += 1;
   }
 
   // get a move or moves from the history
@@ -141,9 +140,8 @@ export class GameControl {
     this[_historyMovement] = [];
     this[_maxMoveCount] = 0;
     this[_currentMoveCount] = 0;
-    this[_indexMove] = 0;
-    this[_isTimeRunning] = false;
+    this.indexMove = 0;
     this[_counter] = 0;
-    this[_stopTimer]();
+    this.stopTimer();
   }
 }

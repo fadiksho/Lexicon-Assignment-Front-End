@@ -1,3 +1,7 @@
+import {
+  GameEvent
+} from './GameEvent';
+
 const _table = Symbol();
 const _updateCellImage = Symbol();
 const _tileGrid = Symbol();
@@ -5,6 +9,9 @@ export class TileGridTable {
 
   constructor(tileGrid) {
     this[_tileGrid] = tileGrid;
+    GameEvent.addEventListener('gameEndEvent', () => {
+      this[_table].style.borderColor = '#008000';
+    });
   }
 
   // the grid will be table cells with images
@@ -24,9 +31,9 @@ export class TileGridTable {
       }
       tableGrid.appendChild(tr);
     }
+    tableGrid.style.border = '2px solid #FFC107';
 
     this[_table] = tableGrid;
-
     return this[_table];
   }
 

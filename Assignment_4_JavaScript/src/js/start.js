@@ -1,34 +1,38 @@
-import {
-  TileGridTable
-} from './TileGridTable.js';
-import {
-  tileMaps
-} from './SokobanBase.js';
 
 import {
   Sokoban
 } from './Sokoban.js';
 import { GameEvent } from './GameEvent.js';
 
-let selectedRenderingEngine = "table";
-
+// #region Dom elements
 let gridRender = document.getElementById('gridRenderingEnginesId');
 let gridRenderEngines = gridRender.getElementsByTagName('button');
 let gameContainer = document.getElementById('gameContainerId');
 let renderContainer = document.getElementById('renderContainerId');
 let renderEngine = document.getElementById('renderEngineId');
+let levelSelect = document.getElementById('levelSelectId');
 let movesHistoryButtons = document.getElementById('movesHistoryButtonsId').getElementsByTagName('button');
 let restartButton = document.getElementById('restartButtonId');
 let movementIndex = document.getElementById('movementIndexId');
 let time = document.getElementById('timeId');
+// #endregion
+
+// variable to keep track the height and width of the tileMap and the selected rendering
 let gridHeight = (document.documentElement.clientHeight, window.innerHeight || 0);
 let gridWidth = renderContainer.clientWidth;
+let selectedRenderingEngine = "table";
+
 // Initial Table Grid
-const sokoban = new Sokoban(tileMaps, gridWidth, gridHeight);
+const sokoban = new Sokoban(gridWidth, gridHeight);
 
 // default to tableRendering
 render(selectedRenderingEngine);
-movementIndex.innerText = sokoban.gameControl.indexMove;
+
+// Add event when level is changed
+levelSelect.addEventListener('change', function() {
+  sokoban.selectMap(levelSelect.value);
+  render(selectedRenderingEngine);
+});
 
 // Add click event for each rendering engine
 for (let i = 0; i < gridRenderEngines.length; i++) {
@@ -55,7 +59,6 @@ for (let i = 0; i < movesHistoryButtons.length; i++) {
     movementIndex.innerText = sokoban.gameControl.indexMove;
   });
 }
-
 // Update the render engine dimension when resize
 window.addEventListener('resize', function () {
   gridHeight = (document.documentElement.clientHeight, window.innerHeight || 0);
@@ -63,7 +66,6 @@ window.addEventListener('resize', function () {
   sokoban.tileGrid.updateTileGridDimension(gridHeight, gridWidth);
   setRenderEngineDimension();
 }, true);
-
 // key event only for the game board
 gameContainer.addEventListener('keydown', function (e) {
   captureKey(e);
@@ -72,45 +74,45 @@ gameContainer.addEventListener('keydown', function (e) {
 restartButton.addEventListener('click', function() {
   sokoban.restart();
   render(selectedRenderingEngine);
-  movementIndex.innerText = sokoban.gameControl.indexMove;
 });
 // Update Time
 GameEvent.addEventListener('timeChangeEvent', function() {
   time.innerText = sokoban.gameControl.timeDuration;
 });
+GameEvent.addEventListener('indexMoveChangeEvent', function () {
+  movementIndex.innerText = sokoban.gameControl.indexMove;
+})
 // Focus on the grid to recive key input after page load
 window.addEventListener('load', function () {
   gameContainer.focus();
+  // preload the image
+  new Image().src = "./images/correct_box.png";;
 });
-
+// Map the keyboard keys to direction
 function captureKey(keyBoardEvent) {
   keyBoardEvent.preventDefault();
   switch (keyBoardEvent.keyCode) {
     // left
     case 37:
       sokoban.move(0, -1);
-      movementIndex.innerText = sokoban.gameControl.indexMove;
       break;
       // top
     case 38:
       sokoban.move(-1, 0);
-      movementIndex.innerText = sokoban.gameControl.indexMove;
       break;
       // right
     case 39:
       sokoban.move(0, 1);
-      movementIndex.innerText = sokoban.gameControl.indexMove;
       break;
       // bottom
     case 40:
       sokoban.move(1, 0);
-      movementIndex.innerText = sokoban.gameControl.indexMove;
       break;
     default:
       break;
   }
 }
-// draw the grid
+// Draw the tileMap
 function render(renderingEngine) {
   sokoban.setRenderEngine(renderingEngine);
   // clear the previouse render
@@ -122,7 +124,7 @@ function render(renderingEngine) {
   // set the width and height of the render
   setRenderEngineDimension();
 }
-
+// Set the width and height of the tileMap
 function setRenderEngineDimension() {
   renderEngine.style.width = sokoban.tileGrid.tileGridDimension + 'px';
 }

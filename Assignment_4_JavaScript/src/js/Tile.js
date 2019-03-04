@@ -66,7 +66,7 @@ export class Tile {
         this[_tileImage] = 'wall.png';
         break;
       case 'B':
-        this[_tileImage] = 'box.png';
+        this[_tileImage] = this[_type] === 'G' ? "correct_box.png" : "box.png";
         break;
       case 'P':
         this[_tileImage] = 'player.png';

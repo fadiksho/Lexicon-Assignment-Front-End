@@ -1,7 +1,10 @@
 import {
   Tile
 } from './Tile';
-
+import {
+  SimpleEvent,
+  GameEvent
+} from './GameEvent';
 const _tileGrid = Symbol();
 const _createTileMap = Symbol();
 const _rows = Symbol();
@@ -12,15 +15,17 @@ const _calculateTileDimensionInPrecent = Symbol();
 const _playerX = Symbol();
 const _playerY = Symbol();
 const _goalTiles = Symbol();
+const _gameEndEvent = Symbol();
 export class TileGrid {
 
   constructor(tileGrid, tileGridWidth, tileGridHeight = 0) {
-
     this[_tileGrid] = this[_createTileMap](tileGrid);
     this[_rows] = this[_tileGrid].length;
     this[_columns] = this[_tileGrid][0].length;
     this[_tileGridDimension] = Math.min(tileGridWidth, tileGridHeight);
     this[_tileDimensionInPrecent] = this[_calculateTileDimensionInPrecent]();
+    this[_gameEndEvent] = new SimpleEvent('gameEndEvent');
+    GameEvent.events['gameEndEvent'] = this[_gameEndEvent];
   }
 
   // fill in the grid with tiles and set the starter point
@@ -65,6 +70,12 @@ export class TileGrid {
   // get the tile dimension
   get tileDimensionInPrecent() {
     return this[_tileDimensionInPrecent];
+  }
+
+  // Check if the game ended
+  // Return: boolean
+  get isGameEnd() {
+    return this[_goalTiles].filter(t => t.hostType !== 'B').length === 0;
   }
 
   // update the deminsion of the map
@@ -133,12 +144,5 @@ export class TileGrid {
     let playerTile = movement.filter(tile => tile.hostType === 'P')[0];
     this[_playerX] = playerTile.row;
     this[_playerY] = playerTile.column;
-  }
-
-  // Check if the game ended
-  // Return: boolean
-  // true | false
-  isGameEnd() {
-    return this[_goalTiles].filter(t => t.hostType !== 'B').length === 0;
   }
 }

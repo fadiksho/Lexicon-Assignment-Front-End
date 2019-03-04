@@ -16,6 +16,10 @@
     type="image/x-icon"
     href="./images/favicon.ico"
   >
+  <meta
+    name="Description"
+    content="Simple implementation of the famous Sokoban Game"
+  >
   <title>Sokoban</title>
   <link
     rel="stylesheet"
@@ -31,7 +35,8 @@
   >
     <a
       class="nav-link font-italic font-weight-bold mr-auto"
-      href=""
+      href="#"
+      id="sokoban_demo"
     >Sokoban-Demo</a>
     <a
       class="nav-link"
@@ -47,16 +52,17 @@
     >
       <div class="game_control mt-1 mt-md-3 mb-md-auto mb-3 mb-md-0">
         <div class="mb-1 mb-md-2 d-flex flex-row align-items-center flex-md-column align-items-md-start">
-          <h5 class="mr-3">Collection</h5>
+          <label for="levelSelectId">
+            <h5 class="mr-3">Collection</h5>
+          </label>
           <select
             class="form-control"
-            id="exampleFormControlSelect1"
+            id="levelSelectId"
+            name="levelSelect"
           >
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option value="0">Orginal</option>
+            <option value="1">Try It</option>
+            <option value="2">Is it imposible!</option>
           </select>
         </div>
         <div class="mb-1 mb-md-2 d-flex flex-row align-items-center flex-md-column align-items-md-start">
@@ -96,11 +102,18 @@
         <div class="mb-2 mb-md-4 d-flex flex-row align-items-center align-items-md-start">
           <h5 class="mr-3">Time:</h5>
           <div>
-            <span id="timeId" class="text-success">00:00</span>
+            <span
+              id="timeId"
+              class="text-success"
+            >00:00</span>
           </div>
         </div>
-        <button id="restartButtonId" class="btn btn-warning btn-block rounded-0">Restart</button>
+        <button
+          id="restartButtonId"
+          class="btn btn-warning btn-block rounded-0"
+        >Restart</button>
       </div>
+
       <div class="flex-grow-1 ml-md-3 overflow-hidden">
         <nav
           class="nav nav-pills nav-fill mb-2"
@@ -111,23 +124,25 @@
             toggle-rendering="table"
           >Table</button>
           <button
-            class="btn btn-link nav-item nav-link"
+            class="btn btn-link nav-item nav-link disabled"
             toggle-rendering="divs"
           >Divs</button>
           <button
-            class="btn btn-link nav-item nav-link"
-            toggle-rendering="canvas"
-          >Canvas</button>
+            class="btn btn-link nav-item nav-link disabled"
+            toggle-rendering="console"
+          >Console</button>
         </nav>
+
         <div
           id="renderContainerId"
-          class="my-3"
+          class="my-3 position-relative"
         >
           <div
             id="renderEngineId"
             class="my-0 mx-auto"
           ></div>
         </div>
+
       </div>
     </div>
   </main>
@@ -143,19 +158,31 @@
           <li>
             <h4>Resources</h4>
           </li>
-          <li><a href="https://www.gameart2d.com/free-graveyard-platformer-tileset.html">gameart2d</a></li>
+          <li>Images</a>
+            <ul>
+              <li><a
+                  href="https://opengameart.org/content/limbo-land-monster-sprites-0"
+                  target="_blank"
+                  rel="noopener"
+                >bevouliin.com</a></li>
+              <li><a
+                  href="https://www.gameart2d.com/free-graveyard-platformer-tileset.html"
+                  target="_blank"
+                  rel="noopener"
+                >gameart2d</a></li>
+            </ul>
+          </li>
           <li><a
               href="https://fonts.google.com"
               target="_black"
+              rel="noopener"
             >Google Fonts</a></li>
         </ul>
         <ul class="list-unstyled">
           <li>
             <h4>Explore</h4>
           </li>
-          <li><a href="">Table</a></li>
-          <li><a href="">Divs</a></li>
-          <li><a href="">Canvas</a></li>
+          <li>Table</li>
         </ul>
       </div>
       <!-- Explore & About-->
@@ -167,14 +194,17 @@
           <li><a
               href="https://twitter.com/FadyKsho"
               target="_blank"
+              rel="noopener"
             >Twitter</a></li>
           <li><a
               href="https://github.com/fadiksho"
               target="_blank"
+              rel="noopener"
             >Github</a></li>
           <li><a
               href="https://www.linkedin.com/in/fadi-ksho"
               target="_blank"
+              rel="noopener"
             >LinkedIn</a></li>
         </ul>
         <ul class="list-unstyled">
