@@ -7,5 +7,6 @@ require("./js/start.js");
 require("./images/emptyTile.png");
 require("./images/wall.png");
 require("./images/box.png");
+require("./images/correct_box.png");
 require("./images/player.png");
 require("./images/goal.png");
